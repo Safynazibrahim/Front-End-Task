@@ -1,0 +1,129 @@
+.image-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+
+.typing {
+  margin: auto;
+  position: absolute;
+  top: 9px;  
+  left: 18%;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bottom-shadow {
+  position: absolute;
+  bottom: -15px;
+  right: 2%; 
+  width: 13%; 
+  height: 10px;
+  background: #dfdfdf;
+  border-radius: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+.carousel-image {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 50%;
+  border-top: 5px solid #3b82f6 !important;
+  border-left: 5px solid #3b82f6 !important;
+  border-right: 5px solid #10b981 !important;
+  border-bottom: 5px solid #10b981 !important;
+}
+.city-box {
+  transition: all 0.2s ease;
+  border: 2px solid #e5e7eb; 
+}
+
+.city-box.active {
+  border-color: #3b82f6; 
+  background-color: #e9f1ff;
+}
+
+::ng-deep .p-carousel-indicator-button {
+  display: none !important;
+}
+::ng-deep .p-button.p-carousel-next-button ng-inserted {
+  color: blue !important;
+}
+
+::ng-deep .p-button-text.p-button-secondary {
+  background-color: #3b82f6 !important;
+  color: white !important;
+}
+::ng-deep .p-carousel-next-button {
+  display: none !important;
+}
+::ng-deep .p-select-option:not(.p-select-option-selected):not(.p-disabled).p-focus {
+  background-color: #E9F1FF !important;
+}
+::ng-deep .p-select-option.p-select-option-selected{
+  background-color: #5093ff !important;
+  color: white !important;
+}
+::ng-deep .p-select.p-focus {
+  border: 1px solid #5093ff !important;
+}
+
+::ng-deep .p-button-outlined {
+  color: #5093ff !important;
+}
+::ng-deep .p-checkbox-input-selected {
+  color: red !important;
+}
+::ng-deep .p-checkbox-checked .p-checkbox-box {
+  background-color: #3b82f6 !important;
+  border-color: #3b82f6 !important;
+}
+::ng-deep .p-accordionpanel {
+  border: none !important;
+}
+::ng-deep .custom-active .p-icon {
+  color: #155dfc !important;
+}
+::ng-deep .p-accordion-header {
+  padding: 0px !important; 
+  background-color: red !important;
+}
+
+.upload-btn {
+  background: linear-gradient(to right, #10b981, #3b82f6); 
+}
+
+@media (max-width: 1400px) {
+  .bottom-shadow {
+    right: 3%;
+    width: 18%;
+  }
+}
+
+@media (max-width: 1199px) {
+  .bottom-shadow {
+    right: 5%;
+    width: 24%;
+  }
+}
+
+@media (max-width: 767px) {
+  .bottom-shadow {
+    right: 6%;
+    width: 40%;
+  }
+}
+
+@media (max-width: 575px) {
+  .bottom-shadow {
+    right: 6%;
+    transform: translateX(-50%);
+    width: 40%;
+  }
+}
+

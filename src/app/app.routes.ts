@@ -12,6 +12,9 @@ export const routes: Routes = [
         component:ContentManagementComponent,
         children:[
             {
+                path: '', redirectTo: 'create-post', pathMatch: 'full'
+            },
+            {
                 path:'create-post',
                 component:CreatePostComponent
             },

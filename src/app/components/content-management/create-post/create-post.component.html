@@ -1,1 +1,225 @@
-<p>create-post works!</p>
+<section class="my-5">
+  <h3 class="font-bold my-5 pb-5">الحالات المنشورة خلال اخر 24 ساعة</h3>
+  <div class="card my-5 relative">
+    <p-carousel
+      [value]="products"
+      [numVisible]="6"
+      [numScroll]="1"
+      [circular]="true"
+      [responsiveOptions]="responsiveOptions"
+    >
+      <ng-template let-product #item>
+        <div class="carousel-item">
+          <div class="image-container relative">
+            <div
+              class="typing bg-white text-black font-bold w-6 h-6 rounded-full shadow-md"
+            >
+              <span class="mb-2">...</span>
+            </div>
+            <img
+              src="https://primefaces.org/cdn/primeng/images/demo/product/{{
+                product.image
+              }}"
+              class="carousel-image"
+            />
+          </div>
+          <div class="text-center mt-2 text-sm text-gray-600">
+            <p>{{ product.date }}</p>
+          </div>
+        </div>
+      </ng-template>
+    </p-carousel>
+    <div class="bottom-shadow mb-5"></div>
+  </div>
+  <hr class="text-gray-300 my-5" />
+  <div class="my-5">
+    <h2 class="font-extrabold text-2xl">شارك منشورا</h2>
+    <p class="text-gray-400 font-bold">
+      يظهر المنشور في المنصة لمدة 24 ساعةللفروف التي يتم اختيارها
+    </p>
+    <div class="card my-5">
+      <label for="country" class="font-semibold text-lg flex items-center mb-2">
+        اختر الدولة <span class="text-red-600 text-xl">*</span>
+      </label>
+      <p-select
+        id="country"
+        [options]="countries"
+        [(ngModel)]="selectedCity"
+        optionLabel="name"
+        placeholder="اختر الدولة"
+        class="w-full"
+        required
+      />
+    </div>
+    <div class="card my-4">
+      <label class="font-semibold text-lg flex items-center gap-1 mb-2">
+        اختر المدن <span class="text-red-500 text-xl">*</span>
+      </label>
+
+      <div class="flex justify-between items-center">
+        <div>
+          <h5 class="text-gray-400 font-bold">
+            المدن المتاحة للعروض(10 مدينة)
+          </h5>
+        </div>
+        <div class="flex flex-wrap gap-2 mb-3">
+          <button
+            class="border shadow rounded p-2 border-gray-300 cursor-pointer"
+            (click)="selectAll()"
+          >
+            تحديد الكل
+          </button>
+          <button
+            class="border shadow rounded p-2 border-gray-300 cursor-pointer"
+            (click)="unselectAll()"
+          >
+            إلغاء التحديد
+          </button>
+        </div>
+      </div>
+
+      <div
+        class="grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-3"
+      >
+        <div
+          *ngFor="let city of cities"
+          (click)="toggleCity(city)"
+          [class.active]="isSelected(city)"
+          class="city-box cursor-pointer px-5 py-2 border rounded-lg text-gray-700 font-semibold"
+        >
+          <p-checkbox
+            [binary]="true"
+            [(ngModel)]="city.selected"
+            class="hidden text-sm"
+          >
+          </p-checkbox>
+          {{ city.name }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr class="text-gray-300 my-5" />
+  <div class="my-5">
+    <label for="branch" class="font-semibold text-lg flex items-center mb-2">
+      اختر الفروع <span class="text-red-600 text-xl">*</span>
+    </label>
+    <p-card class="shadow-2xl my-3" *ngFor="let card of [1, 2, 3, 4]">
+      <p-accordion value="null">
+        <p-accordion-panel
+          value="0"
+          [ngClass]="{ 'custom-active': activePanel === '0' }"
+        >
+          <p-accordion-header>
+            <div
+              class="grid grid-cols-12 gap-3 items-center cursor-pointer w-full"
+              (click)="togglePanel()"
+            >
+              <div
+                class="col-span-12 md:col-span-2 flex items-center justify-center md:justify-start"
+                [ngClass]="{ 'text-blue-600': activePanel === '0' }"
+              >
+                <i class="pi pi-map-marker mx-2"></i>
+                <h4>المدينة المنورة</h4>
+              </div>
+              <div
+                class="col-span-12 md:col-span-6 flex flex-wrap justify-center md:justify-start gap-2"
+              >
+                <button
+                  class="border shadow rounded p-1 border-gray-200 text-gray-500 cursor-pointer"
+                >
+                  <span>12 فرع متاح</span>
+                </button>
+                <button
+                  class="shadow rounded p-1 bg-blue-100 text-blue-500 cursor-pointer"
+                >
+                  <span>{{ selectedCount }} محدد</span>
+                </button>
+              </div>
+              <div
+                class="col-span-12 md:col-span-3 flex flex-column justify-center md:justify-end gap-2"
+              >
+                <button
+                  class="border shadow rounded p-2 border-gray-300 cursor-pointer"
+                  (click)="selectAllBranches(); $event.stopPropagation()"
+                >
+                  تحديد الكل
+                </button>
+                <button
+                  class="border shadow rounded p-2 border-gray-300 cursor-pointer"
+                  (click)="unselectAllBranches(); $event.stopPropagation()"
+                >
+                  إلغاء التحديد
+                </button>
+              </div>
+              <div
+                class="col-span-12 md:col-span-1 flex justify-center md:justify-end items-center"
+              >
+                <span
+                  *ngIf="activePanel !== '0'"
+                  class="font-semibold text-gray-700 flex items-center gap-2"
+                >
+                  عرض الفروع
+                </span>
+                <span
+                  *ngIf="activePanel === '0'"
+                  class="font-semibold text-blue-500 flex items-center gap-2"
+                >
+                  اخفاء الفروع
+                </span>
+              </div>
+            </div>
+          </p-accordion-header>
+          <p-accordion-content>
+            <div
+              class="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-3"
+            >
+              <div
+                *ngFor="let branch of branches"
+                (click)="togglebranch(branch)"
+                [class.active]="isSelected(branch)"
+                class="city-box cursor-pointer px-5 py-2 border rounded-lg text-gray-700 font-semibold"
+              >
+                <p-checkbox
+                  [binary]="true"
+                  [(ngModel)]="branch.selected"
+                  class="hidden text-sm"
+                >
+                </p-checkbox>
+                {{ branch.name }}
+              </div>
+            </div>
+          </p-accordion-content>
+        </p-accordion-panel>
+      </p-accordion>
+    </p-card>
+  </div>
+  <div class="my-10">
+    <div
+      class="cursor-pointer flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-2xl p-16 bg-white text-center"
+      (click)="triggerFileInput()"
+    >
+      <i class="pi pi-upload text-gray-400 mb-4"></i>
+      <p class="text-blue-600 font-semibold mb-2">اسحب أو ارفع من جهازك</p>
+      <p class="text-gray-400 text-sm font-bold">
+        الحد الأقصى المسموح به للملفات هو 10 ميغابايت
+      </p>
+      <p class="text-gray-400 text-sm font-bold">(PNG - JPEG - MP4) بصيغ</p>
+
+      <input
+        type="file"
+        id="fileUpload"
+        (change)="onFileSelected($event)"
+        #fileInput
+        class="hidden"
+      />
+    </div>
+
+    <div class="mt-6 flex justify-center">
+      <button
+        class="w-full text-white font-bold py-3 rounded-lg shadow-md upload-btn cursor-pointer"
+      >
+        شارك المنشور <i class="pi pi-cloud-upload mx-2"></i>
+      </button>
+    </div>
+  </div>
+</section>
