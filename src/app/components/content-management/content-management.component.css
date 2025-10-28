@@ -1,0 +1,15 @@
+/* Custom styles to make the buttons look like tabs */
+.tab-group {
+  width: fit-content;
+  border-radius: 30px; /* Rounded buttons */
+  background-color: #f2f5f8; /* Light background */
+}
+.tab {
+    padding: 5px 15px;
+    background-color: transparent;
+    border-radius: 30px;
+}
+.active-tab{
+    color: #fff;
+    background-color: #2687f3;
+}
