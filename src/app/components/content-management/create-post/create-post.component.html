@@ -1,1 +1,34 @@
-<p>create-post works!</p>
+<section class="my-5">
+  <h3 class="font-bold my-5 pb-5">الحالات المنشورة خلال اخر 24 ساعة</h3>
+  <div class="card my-5">
+    <p-carousel
+      [value]="products"
+      [numVisible]="6"
+      [numScroll]="1"
+      [circular]="true"
+      [responsiveOptions]="responsiveOptions"
+    >
+      <ng-template let-product #item>
+        <div
+          class="carousel-item"
+        >
+          <div class="image-container">
+            <!-- <div class="typing">...</div> -->
+            <img
+              src="https://primefaces.org/cdn/primeng/images/demo/product/{{
+                product.image
+              }}"
+              class="carousel-image"
+            />
+          </div>
+          <div class="text-center mt-2 text-sm text-gray-600">
+            <p>{{ product.date }}</p>
+          </div>
+        </div>
+      </ng-template>
+    </p-carousel>
+    <div class="bottom-shadow"></div>
+  </div>
+  <hr class="text-gray-300 my-5">
+
+</section>

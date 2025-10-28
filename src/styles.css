@@ -5,3 +5,6 @@
 html[lang='ar'] {
   direction: rtl;
 }
+:root {
+  --bg-primary: linear-gradient(to right, #3b82f6, #10b981) 1;
+}
