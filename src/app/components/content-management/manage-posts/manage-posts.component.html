@@ -1,1 +1,217 @@
-<p>manage-posts works!</p>
+<section class="p-5">
+  <div class="grid grid-cols-12 gap-2 mx-auto my-4">
+    <div
+      class="col-span-12 xl:col-span-3 text-center p-2 border border-gray-300 rounded shadow"
+    >
+      <h2 class="font-bold">عدد المحتوى المنشور</h2>
+      <p class="font-bold text-gray-500">اجمالي الحالات التي نشرتها المنشأة</p>
+      <h3 class="font-extrabold text-3xl my-15">324</h3>
+      <div class="card">
+        <p-chart
+          #myChartCanvas
+          type="line"
+          [data]="data1"
+          [options]="options1"
+          class="h-50"
+        />
+      </div>
+    </div>
+    <div class="xl:col-span-1 hidden xl:block">
+      <p-divider layout="vertical" />
+    </div>
+    <div
+      class="col-span-12 xl:col-span-8 p-2 border border-gray-300 rounded shadow"
+    >
+      <div class="p-2 flex justify-between items-center my-3">
+        <h3 class="font-bold text-blue-500">
+          احصائيات محتوى المنشأة على المنصة 2025-2026
+        </h3>
+        <div class="relative inline-block">
+          <button
+            class="bg-blue-200 p-2 rounded text-blue-500 cursor-pointer flex items-center justify-center"
+            (click)="toggleListBox($event)"
+          >
+            <i class="pi pi-filter text-xl"></i>
+          </button>
+
+          <div
+            *ngIf="showListBox"
+            class="absolute left-1/2 transform -translate-x-1/2 mt-2 z-50 bg-white shadow-lg rounded-lg border border-gray-200"
+            (click)="$event.stopPropagation()"
+          >
+            <p-listbox
+              [(ngModel)]="selectedFilter"
+              [options]="filters"
+              optionLabel="name"
+              [checkmark]="true"
+              [highlightOnSelect]="false"
+              class="w-48"
+              (onChange)="closeListBox()"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-12 gap-2 p-2 my-2">
+        <div class="col-span-6 xl:col-span-3 my-3 flex items-center gap-2">
+          <div>
+            <button
+              class="bg-blue-200 p-2 rounded-lg text-blue-500 cursor-pointer flex items-center justify-center"
+            >
+              <i class="pi pi-filter text-xl"></i>
+            </button>
+          </div>
+          <div>
+            <span class="font-bold">المشاهدات</span>
+            <h3 class="font-extrabold">40K</h3>
+            <p class="text-sm text-green-500">12.5% زيادة عن العام الماضي</p>
+          </div>
+        </div>
+        <div class="col-span-6 xl:col-span-3 my-3 flex items-center gap-2">
+          <div>
+            <button
+              class="bg-blue-200 p-2 rounded-lg text-blue-500 cursor-pointer flex items-center justify-center"
+            >
+              <i class="pi pi-filter text-xl"></i>
+            </button>
+          </div>
+          <div>
+            <span class="font-bold">المشاهدات</span>
+            <h3 class="font-extrabold">40K</h3>
+            <p class="text-sm text-green-500">12.5% زيادة عن العام الماضي</p>
+          </div>
+        </div>
+        <div class="col-span-6 xl:col-span-3 my-3 flex items-center gap-2">
+          <div>
+            <button
+              class="bg-blue-200 p-2 rounded-lg text-blue-500 cursor-pointer flex items-center justify-center"
+            >
+              <i class="pi pi-filter text-xl"></i>
+            </button>
+          </div>
+          <div>
+            <span class="font-bold">المشاهدات</span>
+            <h3 class="font-extrabold">40K</h3>
+            <p class="text-sm text-green-500">12.5% زيادة عن العام الماضي</p>
+          </div>
+        </div>
+        <div class="col-span-6 xl:col-span-3 my-3 flex items-center gap-2">
+          <div>
+            <button
+              class="bg-blue-200 p-2 rounded-lg text-blue-500 cursor-pointer flex items-center justify-center"
+            >
+              <i class="pi pi-filter text-xl"></i>
+            </button>
+          </div>
+          <div>
+            <span class="font-bold">المشاهدات</span>
+            <h3 class="font-extrabold">40K</h3>
+            <p class="text-sm text-green-500">12.5% زيادة عن العام الماضي</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <p-chart type="line" [data]="data2" [options]="options2" class="h-50" />
+      </div>
+    </div>
+  </div>
+  <hr class="text-gray-300 my-13" />
+  <div class="my-5">
+    <h2 class="font-extrabold text-2xl">شارك منشورا</h2>
+    <p class="text-gray-400 font-bold">
+      يظهر المنشور في المنصة لمدة 24 ساعةللفروف التي يتم اختيارها
+    </p>
+  </div>
+  <div class="grid grid-cols-12 gap-5 justify-between my-5">
+    <div class="card col-span-12 md:col-span-6">
+      <label for="country" class="font-semibold text-lg flex items-center mb-2">
+        اختر الدولة <span class="text-red-600 text-xl">*</span>
+      </label>
+      <p-select
+        id="country"
+        [options]="countries"
+        [(ngModel)]="selectedCountry"
+        optionLabel="name"
+        placeholder="اختر الدولة"
+        class="w-full"
+        required
+      />
+    </div>
+    <div class="card col-span-12 md:col-span-6">
+      <label for="country" class="font-semibold text-lg flex items-center mb-2">
+        اختر المدينة <span class="text-red-600 text-xl">*</span>
+      </label>
+      <p-select
+        id="country"
+        [options]="cities"
+        [(ngModel)]="selectedCity"
+        optionLabel="name"
+        placeholder="اختر المدينة"
+        class="w-full"
+        required
+      />
+    </div>
+  </div>
+  <div class="grid grid-cols-12 my-5">
+    <div class="card col-span-12">
+      <label for="country" class="font-semibold text-lg flex items-center mb-2">
+        الفروع <span class="text-red-600 text-xl">*</span>
+      </label>
+      <p-multiSelect
+        id="branches"
+        [options]="branches"
+        [(ngModel)]="selectedBranches"
+        optionLabel="name"
+        placeholder="اختر من فروع المدينة"
+        display="chip"
+        selectedItemsLabel="   "
+        class="w-full"
+        [ngClass]="{ 'hide-selected': selectedBranches.length !== 0 }"
+      />
+      <div *ngIf="selectedBranches?.length" class="mt-3 flex flex-wrap gap-2">
+        <span
+          *ngFor="let branch of selectedBranches"
+          class="bg-gray-100 shadow text-gray-700 px-3 py-1 rounded text-sm flex items-center gap-1"
+        >
+          {{ branch.name }}
+          <button
+            type="button"
+            class="pi pi-times text-xs cursor-pointer"
+            (click)="removeBranch(branch)"
+          ></button>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="grid grid-cols-12 my-15 gap-5">
+    <div
+      class="card col-span-6 md:col-span-4 lg:col-span-3 xl:col-span-2"
+      *ngFor="let product of paginatedProducts"
+    >
+      <div class="image-container relative">
+        <div
+          class="typing bg-white text-black font-bold w-6 h-6 rounded shadow-md"
+        >
+          <span class="mb-2">...</span>
+        </div>
+        <img
+          src="https://primefaces.org/cdn/primeng/images/demo/product/{{
+            product.image
+          }}"
+          class="rounded-2xl w-60 h-45"
+        />
+      </div>
+      <div class="text-end mt-2 text-sm text-gray-600">
+        <p>{{ product.date }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="card flex justify-center my-8">
+    <p-paginator
+      (onPageChange)="onPageChange($event)"
+      [first]="first"
+      [rows]="rows"
+      [totalRecords]="products.length"
+      [showFirstLastIcon]="false"
+    />
+  </div>
+</section>

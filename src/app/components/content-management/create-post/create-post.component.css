@@ -103,12 +103,18 @@
     right: 3%;
     width: 18%;
   }
+  .typing {
+    left: 25%;
+  }
 }
 
 @media (max-width: 1199px) {
   .bottom-shadow {
     right: 5%;
     width: 24%;
+  }
+  .typing {
+    left: 14%;
   }
 }
 
@@ -117,6 +123,9 @@
     right: 6%;
     width: 40%;
   }
+  .typing {
+    left: 25%;
+  }
 }
 
 @media (max-width: 575px) {
@@ -124,6 +133,9 @@
     right: 6%;
     transform: translateX(-50%);
     width: 40%;
+  }
+  .typing {
+    left: 35%;
   }
 }
 
