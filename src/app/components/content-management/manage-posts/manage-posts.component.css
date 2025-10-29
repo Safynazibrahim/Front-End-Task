@@ -1,0 +1,75 @@
+::ng-deep .p-select-option:not(.p-select-option-selected):not(.p-disabled).p-focus {
+  background-color: #E9F1FF !important;
+}
+::ng-deep .p-select-option.p-select-option-selected{
+  background-color: #5093ff !important;
+  color: white !important;
+}
+::ng-deep .p-select.p-focus {
+  border: 1px solid #5093ff !important;
+}
+::ng-deep .p-multiselect-option:not(.p-multiselect-option-selected):not(.p-disabled).p-focus {
+  background-color: #E9F1FF !important;
+}
+::ng-deep .p-multiselect-option.p-multiselect-option-selected{
+  background-color: #92bafb !important;
+  color: white !important;
+}
+::ng-deep .p-multiselect.p-focus {
+  border: 1px solid #5093ff !important;
+}
+::ng-deep .p-checkbox-checked .p-checkbox-box {
+  background-color: #3b82f6 !important;
+  border-color: #3b82f6 !important;
+}
+
+
+::ng-deep .hide-selected .p-multiselect-label {
+  position: relative;
+  min-height: 2.5rem !important;
+}
+
+::ng-deep .hide-selected .p-multiselect-label .p-chip {
+  visibility: hidden;
+  min-height: 2.2rem !important;
+}
+
+::ng-deep .hide-selected .p-multiselect-label::before {
+  content: 'اختر من فروع المدينة';
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #8c929c;
+  font-size: 0.95rem;
+  pointer-events: none;
+}
+
+.image-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+
+.typing {
+  margin: auto;
+  position: absolute;
+  top: 9px;  
+  left: 3%;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+::ng-deep .p-paginator-page.p-paginator-page-selected {
+  background-color: #3b82f6 !important;
+  color: #fff !important;
+  border-color: transparent !important;
+  border-radius: 12px !important;
+}
+::ng-deep .p-paginator-page,.p-paginator-next, .p-paginator-prev {
+  border: 1px solid rgb(197, 196, 196) !important;
+  border-radius: 12px !important;
+}
